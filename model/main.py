@@ -7,7 +7,7 @@ import pickle as pickle
 
 
 def get_clean_data():
-    data = pd.read_csv('/Users/malikaeryomina/PycharmProjects/Streamlit-cancer/data/data.csv')
+    data = pd.read_csv('data/data.csv')
 
     data = data.drop(['Unnamed: 32', 'id'], axis=1)
     data['diagnosis'] = data['diagnosis'].map({'M': 1, 'B':0})
@@ -41,9 +41,9 @@ def create_model(data):
 def main():
     data = get_clean_data()
     model, scaler = create_model(data)
-    with open('/Users/malikaeryomina/PycharmProjects/Streamlit-cancer/model/model.pkl', 'wb') as f:
+    with open('model/model.pkl', 'wb') as f:
         pickle.dump(model, f)
-    with open('/Users/malikaeryomina/PycharmProjects/Streamlit-cancer/model/scaler.pkl', 'wb') as f:
+    with open('model/scaler.pkl', 'wb') as f:
         pickle.dump(scaler, f)
 
 
